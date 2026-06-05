@@ -1,46 +1,37 @@
 # web-docs
 
-Situs dokumentasi resmi [Tenun](https://github.com/TenunLang/Tenun) — **dibangun dan disajikan dengan Tenun sendiri**. Server pakai [modul-web](https://github.com/TenunLang/modul-web), template pakai [Batik](https://github.com/TenunLang/modul-tampilan).
+Dokumentasi resmi [Tenun](https://github.com/TenunLang/Tenun) — sumber kebenaran berbentuk **markdown** di `content/`. Disajikan apa adanya (text/plain) agar ramah LLM/agen, dan menjadi sumber untuk [tenun-mcp](https://github.com/TenunLang/tenun-mcp) (MCP server untuk Claude Code).
 
-## Jalankan
+## Isi
+
+`content/*.md` — dokumen lengkap:
+
+- `index`, `bahasa`, `grammar`, `builtin`
+- modul: `web`, `rute`, `tampilan`, `json`, `websocket`, `socketio`, `orm`, `mysql`, `postgres`, `redis`, `auth`, `sesi`, `mail`
+- `contoh-toko` — contoh e-commerce
+- `daftar.json` — manifest dokumen
+
+## Server (opsional)
+
+Ditulis dengan Tenun (`modul-web`). Menyajikan markdown sebagai text/plain.
 
 ```
 tenun add web
-tenun add tampilan
-tenun run src/server.tenun     # http://localhost:8080
+tenun run src/server.tenun      # http://localhost:8080
 ```
 
-Jalankan dari folder ini (template `view/*.batik` dan aset `publik/` dibaca relatif terhadap direktori kerja).
+Endpoint:
 
-## Halaman
+- `GET /` — ringkasan (index.md)
+- `GET /daftar` — daftar nama dokumen (JSON)
+- `GET /<nama>` — isi dokumen markdown (mis. `/bahasa`, `/web`, `/orm`)
 
-- `/` — beranda (fitur, pasang, perintah)
-- `/bahasa` — referensi bahasa (tipe, fungsi, peta, first-class function, server)
-- `/modul` — katalog modul resmi
-- `/gaya.css` — gaya (disajikan via `web_berkas`)
+## Akses langsung (tanpa server)
 
-## Struktur
-
-```
-web-docs/
-  tenun.json          (butuh: web, tampilan)
-  src/server.tenun    rute + handler + katalog modul
-  view/
-    tata.batik        layout (nav + {{konten}} + footer)
-    beranda.batik
-    bahasa.batik
-    modul.batik
-  publik/gaya.css
-```
-
-## Produksi
-
-Server berjalan HTTP. Untuk HTTPS, terminasi TLS di reverse proxy (Caddy/nginx):
+File markdown bisa diambil langsung dari GitHub raw:
 
 ```
-docs.tenun.dev {
-    reverse_proxy localhost:8080
-}
+https://raw.githubusercontent.com/TenunLang/web-docs/main/content/bahasa.md
 ```
 
 ## Lisensi

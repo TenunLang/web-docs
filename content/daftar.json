@@ -1,0 +1,20 @@
+[
+  { "nama": "index", "judul": "Ringkasan, pasang, perintah CLI, tenun.json" },
+  { "nama": "bahasa", "judul": "Referensi bahasa: tipe, sintaks, fungsi, peta, first-class function" },
+  { "nama": "grammar", "judul": "Grammar EBNF" },
+  { "nama": "builtin", "judul": "Semua fungsi builtin" },
+  { "nama": "web", "judul": "modul web — HTTP framework (routing, middleware, CORS, cookie, static)" },
+  { "nama": "rute", "judul": "modul rute — router sederhana" },
+  { "nama": "tampilan", "judul": "modul tampilan — Batik template engine (.batik)" },
+  { "nama": "json", "judul": "modul json — bangun & baca JSON" },
+  { "nama": "websocket", "judul": "modul websocket — server WebSocket RFC 6455" },
+  { "nama": "socketio", "judul": "modul socketio — Socket.IO realtime (emit/on + broadcast)" },
+  { "nama": "orm", "judul": "modul orm — ORM MySQL/Postgres + definisi model" },
+  { "nama": "mysql", "judul": "modul mysql — klien MySQL/MariaDB" },
+  { "nama": "postgres", "judul": "modul postgres — klien PostgreSQL" },
+  { "nama": "redis", "judul": "modul redis — klien Redis (RESP)" },
+  { "nama": "auth", "judul": "modul auth — hashing sandi PBKDF2 + JWT" },
+  { "nama": "sesi", "judul": "modul sesi — session + cookie" },
+  { "nama": "mail", "judul": "modul mail — SMTP/SMTPS, Resend, IMAP/IMAPS" },
+  { "nama": "contoh-toko", "judul": "Contoh e-commerce lengkap (struktur ala Laravel)" }
+]

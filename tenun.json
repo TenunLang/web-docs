@@ -1,1 +1,1 @@
-{"nama":"web-docs","versi":"0.1.0","butuh":{"web":"^0.1.0","tampilan":"^0.1.0"}}
+{"nama":"web-docs","versi":"0.1.0","berkas":"src/server.tenun","butuh":{"web":"^0.1.0"},"skrip":{"layani":"run src/server.tenun"}}
