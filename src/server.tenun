@@ -44,20 +44,11 @@ fungsi modul(): teks {
     kembali halaman("Modul Tenun", tampilan_render(bacaFile("view/modul.batik"), peta{ "daftar": kartu }));
 }
 
-fungsi gaya(): teks {
-    kembali web_berkas("publik/gaya.css");
-}
-
-fungsi logo(): teks {
-    kembali web_berkas("publik/logo.png");
-}
-
 web_pakai(web_log);
+web_statik("publik");          // sajikan /gaya.css, /logo.png, dst dari publik/
 web_get("/", beranda);
 web_get("/bahasa", bahasa);
 web_get("/modul", modul);
-web_get("/gaya.css", gaya);
-web_get("/logo.png", logo);
 
 fungsi tangani(metode: teks, jalur: teks, badan: teks): teks {
     kembali web_tangani(metode, jalur, badan);
