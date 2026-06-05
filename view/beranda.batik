@@ -1,6 +1,7 @@
 <section class="hero">
-  <h1><span>Tenun</span></h1>
-  <p>Bahasa pemrograman dengan keyword Bahasa Indonesia. Compiler ditulis Zig. Cepat (VM + codegen native), statis, dan siap untuk web.</p>
+  <img src="/logo.png" alt="Tenun">
+  <h1>Tenun</h1>
+  <p class="sub">Kode dijalin jadi satu. Bahasa pemrograman dengan keyword Bahasa Indonesia, compiler ditulis Zig — cepat, statis, dan siap untuk web.</p>
   <a class="tombol" href="/bahasa">Pelajari Bahasa</a>
   <a class="tombol alt" href="/modul">Lihat Modul</a>
 </section>

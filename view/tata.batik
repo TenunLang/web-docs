@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{judul}}</title>
+<link rel="icon" type="image/png" href="/logo.png">
 <link rel="stylesheet" href="/gaya.css">
 </head>
 <body>
 <header class="nav">
-  <a class="merek" href="/">Tenun</a>
+  <a class="merek" href="/"><img src="/logo.png" alt="Tenun"> Tenun</a>
   <nav>
     <a href="/">Beranda</a>
     <a href="/bahasa">Bahasa</a>
@@ -17,6 +18,6 @@
   </nav>
 </header>
 <main>{{konten}}</main>
-<footer>Tenun — bahasa pemrograman dengan keyword Bahasa Indonesia, compiler ditulis Zig. Situs ini disajikan oleh server Tenun (modul-web + Batik). MIT.</footer>
+<footer>Tenun — bahasa pemrograman dengan keyword Bahasa Indonesia, compiler ditulis Zig.<br>Situs ini disajikan oleh server Tenun (modul-web + Batik). MIT.</footer>
 </body>
 </html>
