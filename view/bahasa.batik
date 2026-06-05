@@ -1,0 +1,52 @@
+<h1>Bahasa Tenun</h1>
+<p>Referensi singkat. Detail lengkap di <a href="https://github.com/TenunLang/Tenun/blob/main/docs/BAHASA.md">docs/BAHASA.md</a>.</p>
+
+<h2>Variabel & tipe</h2>
+<p>Tipe dasar: <code>bulat</code> (i64), <code>desimal</code> (f64), <code>teks</code>, <code>bool</code>, <code>kosong</code>. Plus <code>[]T</code> (larik), <code>peta</code> (map), <code>fungsi</code>.</p>
+<pre><code>biar x: bulat = 10;        // bisa berubah
+tetap pi: desimal = 3.14;  // konstan
+biar nama = "Tenun";       // tipe disimpulkan</code></pre>
+
+<h2>Kontrol alur</h2>
+<pre><code>kalau x > 5 {
+    cetak("besar");
+} lain {
+    cetak("kecil");
+}
+
+selama x > 0 { x = x - 1; }
+
+untuk i dari 0 sampai 5 { cetak(keTeks(i)); }</code></pre>
+
+<h2>Fungsi</h2>
+<pre><code>fungsi tambah(a: bulat, b: bulat): bulat {
+    kembali a + b;
+}
+cetak(keTeks(tambah(3, 4)));   // 7</code></pre>
+
+<h2>Larik</h2>
+<pre><code>biar xs: []bulat = [5, 10, 15];
+cetak(keTeks(xs[0]));        // 5
+cetak(keTeks(panjang(xs)));  // 3
+biar kosong: []teks = [];    // larik kosong
+kosong = dorong(kosong, "halo");</code></pre>
+
+<h2>Peta</h2>
+<pre><code>biar u: peta = peta{ "nama": "taqin", "peran": "admin" };
+cetak(u["nama"]);                 // taqin
+u["email"] = "a@x.id";
+cetak(petaPunya(u, "email"));     // benar</code></pre>
+
+<h2>Fungsi sebagai nilai (first-class)</h2>
+<pre><code>fungsi kali(a: bulat, b: bulat): bulat { kembali a * b; }
+biar op: fungsi = kali;
+cetak(keTeks(op(6, 7)));          // 42
+
+fungsi terapkan(f: fungsi, x: bulat, y: bulat): dinamis { kembali f(x, y); }
+cetak(keTeks(terapkan(kali, 2, 5)));  // 10</code></pre>
+
+<h2>Server HTTP</h2>
+<pre><code>fungsi tangani(metode: teks, jalur: teks, badan: teks): teks {
+    kembali "Halo dari " + jalur;
+}
+layani(8080);   // langsung jadi server, tanpa build</code></pre>

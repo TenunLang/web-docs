@@ -1,0 +1,61 @@
+// Situs dokumentasi Tenun — disajikan oleh server Tenun sendiri.
+// Server: modul-web. Template: modul-tampilan (Batik). Jalankan:
+//   tenun run src/server.tenun   (dari folder web-docs)
+
+impor "web";
+impor "tampilan";
+
+// Bungkus konten halaman ke dalam layout.
+fungsi halaman(judul: teks, konten: teks): teks {
+    biar tata: teks = bacaFile("view/tata.batik");
+    kembali web_html(tampilan_render(tata, peta{ "judul": judul, "konten": konten }));
+}
+
+fungsi beranda(): teks {
+    kembali halaman("Tenun — Bahasa Pemrograman", tampilan_render_berkas("view/beranda.batik", peta{}));
+}
+
+fungsi bahasa(): teks {
+    kembali halaman("Bahasa Tenun", tampilan_render_berkas("view/bahasa.batik", peta{}));
+}
+
+// Katalog modul.
+fungsi daftarModul(): []peta {
+    kembali [
+        peta{ "nama": "web", "desk": "Core HTTP framework rasa Express: routing, middleware, CORS, cookie." },
+        peta{ "nama": "websocket", "desk": "Server WebSocket RFC 6455: handshake + frame teks/biner." },
+        peta{ "nama": "socketio", "desk": "Socket.IO EIO4: event emit/on + broadcast realtime." },
+        peta{ "nama": "orm", "desk": "ORM aman (parameter) untuk MySQL & Postgres + definisi model." },
+        peta{ "nama": "mysql", "desk": "Klien MySQL/MariaDB: query + prepared statement biner." },
+        peta{ "nama": "postgres", "desk": "Klien PostgreSQL v3: auth (incl. SCRAM) + query berparameter." },
+        peta{ "nama": "redis", "desk": "Klien Redis (protokol RESP)." },
+        peta{ "nama": "tampilan", "desk": "Batik — template engine teks (.batik): seksi, loop, layout." },
+        peta{ "nama": "json", "desk": "Bangun & baca JSON." },
+        peta{ "nama": "rute", "desk": "Router sederhana dengan parameter jalur." },
+        peta{ "nama": "auth", "desk": "Hashing sandi PBKDF2 + token JWT HS256." },
+        peta{ "nama": "sesi", "desk": "Manajemen sesi server + bantu cookie." },
+        peta{ "nama": "mail", "desk": "Email lengkap: SMTP/SMTPS, Resend API, IMAP/IMAPS, HTML, lampiran." }
+    ];
+}
+
+fungsi modul(): teks {
+    biar item: teks = "<a class=\"kartu\" href=\"https://github.com/TenunLang/modul-{{nama}}\"><h3>{{nama}}</h3><p>{{desk}}</p><span class=\"tag\">tenun add {{nama}}</span></a>";
+    biar kartu: teks = batik_daftar(item, daftarModul());
+    kembali halaman("Modul Tenun", tampilan_render(bacaFile("view/modul.batik"), peta{ "daftar": kartu }));
+}
+
+fungsi gaya(): teks {
+    kembali web_berkas("publik/gaya.css");
+}
+
+web_pakai(web_log);
+web_get("/", beranda);
+web_get("/bahasa", bahasa);
+web_get("/modul", modul);
+web_get("/gaya.css", gaya);
+
+fungsi tangani(metode: teks, jalur: teks, badan: teks): teks {
+    kembali web_tangani(metode, jalur, badan);
+}
+
+layani(8080);

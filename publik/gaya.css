@@ -1,0 +1,52 @@
+:root{
+  --bg:#0d1117; --panel:#161b22; --line:#21262d; --tx:#e6edf3; --mut:#8b949e;
+  --ak:#e8a33d; --ak2:#6ea8fe; --ok:#3fb950;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--ak2);text-decoration:none}
+a:hover{text-decoration:underline}
+code,pre{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace}
+
+.nav{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;
+  background:rgba(13,17,23,.85);backdrop-filter:blur(8px)}
+.merek{font-weight:800;font-size:20px;color:var(--ak)}
+.nav nav a{margin-left:18px;color:var(--mut)}
+.nav nav a:hover{color:var(--tx)}
+
+main{max-width:920px;margin:0 auto;padding:40px 24px 80px}
+
+.hero{text-align:center;padding:56px 0 36px}
+.hero h1{font-size:54px;margin:0 0 8px;letter-spacing:-1px}
+.hero h1 span{color:var(--ak)}
+.hero p{font-size:20px;color:var(--mut);max-width:640px;margin:0 auto 24px}
+.tombol{display:inline-block;background:var(--ak);color:#1b1300;font-weight:700;
+  padding:12px 22px;border-radius:8px;margin:6px}
+.tombol.alt{background:transparent;color:var(--tx);border:1px solid var(--line)}
+
+pre{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;overflow:auto}
+pre code{color:#d2c4a8}
+p code,li code{background:var(--panel);border:1px solid var(--line);
+  padding:1px 6px;border-radius:5px;font-size:.9em;color:var(--ak)}
+
+h2{margin-top:44px;font-size:30px;border-bottom:1px solid var(--line);padding-bottom:8px}
+h3{font-size:20px}
+
+.fitur{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:32px 0}
+.fitur div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+.fitur h3{margin:0 0 6px;color:var(--ak)}
+.fitur p{margin:0;color:var(--mut);font-size:15px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:24px 0}
+.kartu{display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:18px;color:var(--tx)}
+.kartu:hover{border-color:var(--ak);text-decoration:none;transform:translateY(-2px);transition:.15s}
+.kartu h3{margin:0 0 6px;color:var(--ak2)}
+.kartu p{margin:0;color:var(--mut);font-size:14px}
+.kartu .tag{font-size:12px;color:var(--ok)}
+
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;
+  padding:28px;font-size:14px}
