@@ -28,6 +28,8 @@ Fungsi bawaan (tanpa impor). Tersedia di `tenun run` (VM/interp). Codegen native
 ## Waktu & acak
 
 - `waktu(): bulat` — unix timestamp (detik)
+- `waktuMili(): bulat` — unix timestamp (milidetik)
+- `tanggal(ts: bulat, offsetJam: bulat): teks` — format ts jadi "YYYY-MM-DD HH:MM:SS" pada offset zona waktu (jam). Mis. `tanggal(waktu(), 7)` = waktu WIB.
 - `acakAngka(min: bulat, max: bulat): bulat` — bilangan acak [min, max)
 - `acak(n: bulat): teks` — n byte acak (CSPRNG, lihat Kripto)
 
