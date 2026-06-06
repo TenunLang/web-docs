@@ -72,6 +72,40 @@ Relasi:
 - `orm_gabung(soket, kiri, kanan, kunciKiri, kunciKanan): teks` — INNER JOIN.
 - `orm_gabung_cari(soket, kiri, kanan, kunciKiri, kunciKanan, whereKolom, whereNilai): teks` — JOIN + filter berparameter.
 
+Query builder berantai (ala Eloquent):
+
+```tenun
+biar b: peta = qb("pengguna");
+b = qb_dimana(b, "umur", ">=", "18");
+b = qb_seperti(b, "nama", "%budi%");
+b = qb_dimana_dalam(b, "kota", ["Bandung", "Jakarta"]);
+b = qb_urut(b, "umur", "DESC");
+b = qb_halaman(b, 2, 10);
+biar hasil: teks = qb_ambil(db, b);
+cetak(qb_hitung(db, b));
+cetak(qb_agregat(db, b, "AVG", "umur"));
+```
+
+- `qb(tabel)`, `qb_pilih`, `qb_dimana(kolom, op, nilai)`, `qb_atau`, `qb_seperti`, `qb_dimana_dalam`, `qb_antara`, `qb_kosong`, `qb_tidak_kosong`, `qb_urut`, `qb_kelompok`, `qb_batas`, `qb_lewati`, `qb_halaman`.
+- Eksekusi: `qb_ambil`, `qb_pertama`, `qb_hitung`, `qb_agregat(s, b, "SUM"|"AVG"|"MIN"|"MAX", kolom)`, `qb_hapus`, `qb_sql` (debug).
+
+Transaksi & aksi tulis lanjutan:
+
+- `orm_transaksi` / `orm_komit` / `orm_batal` — BEGIN/COMMIT/ROLLBACK.
+- `orm_id_terakhir(soket): bulat` — id auto-increment terakhir.
+- `orm_sisip_id(...)` — INSERT lalu kembalikan id baru.
+- `orm_sisip_banyak(soket, tabel, kolom, baris: [][]teks)` — bulk INSERT.
+- `orm_upsert(soket, tabel, kolom, nilai, konflik)` — INSERT/UPDATE bila bentrok (ON DUPLICATE KEY / ON CONFLICT).
+
+Skema lanjutan (driver-aware):
+
+- `orm_tipe_id()` — tipe id PK (`INT AUTO_INCREMENT PRIMARY KEY` / `SERIAL PRIMARY KEY`).
+- `orm_indeks` / `orm_indeks_unik` / `orm_kunci_asing`.
+
+Relasi many-to-many: `orm_milik_banyak` (pivot), `orm_tautkan` / `orm_lepas`.
+
+Soft-delete & helper model: `orm_pakai_softdelete`, `orm_model_hapus_lunak`, `orm_model_pulihkan`, `orm_model_semua_aktif`, `orm_cari_atau_buat`, `orm_perbarui_atau_buat`.
+
 Query berparameter & baca hasil:
 
 - `orm_jalan(soket, sql, params: []teks): teks` — jalankan SQL dengan placeholder `?` (nilai dikirim terpisah, aman injeksi).
@@ -159,7 +193,7 @@ Fungsi model: `orm_model`, `orm_kolom`, `orm_model_kolom`, `orm_timestamps`, `or
 ## Catatan
 
 - Satu driver aktif per koneksi (disimpan modul). Untuk dua DB beda driver bersamaan, gunakan modul `mysql`/`postgres` langsung.
-- Definisi model, relasi, migrasi, dan CRUD aman sudah tersedia. JOIN builder lanjutan menyusul.
+- Lengkap: query builder berantai, transaksi, upsert/bulk, paginasi, agregasi, indeks/FK, relasi (incl. many-to-many), soft-delete, validasi.
 
 ## Lisensi
 
