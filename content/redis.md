@@ -27,6 +27,24 @@ redis_tutup(r);
 - `redis_perintah(soket: bulat, cmd: teks): teks` — jalankan perintah (dipisah spasi), kembalikan balasan sebagai teks.
 - `redis_jalan(soket: bulat, args: []teks): teks` — versi argumen larik (aman untuk nilai berisi spasi).
 
+### Perintah tingkat-tinggi
+
+- Server: `redis_ping`, `redis_auth`, `redis_pilih(db)`, `redis_bersihkan`.
+- String/kunci: `redis_set`, `redis_get`, `redis_setex(k, detik, v)`, `redis_del`, `redis_ada`, `redis_kedaluwarsa`, `redis_ttl`, `redis_incr`, `redis_decr`, `redis_naik`.
+- Hash: `redis_hset`, `redis_hget`, `redis_hdel`, `redis_hsemua`.
+- List: `redis_lpush`, `redis_rpush`, `redis_lpop`, `redis_rpop`, `redis_llen`, `redis_lrange`.
+- Set: `redis_sadd`, `redis_smembers`, `redis_sada`.
+
+### Rate limiting (web)
+
+```tenun
+kalau redis_batas(r, "rl:" + ip, 100, 60) == salah {
+    statusKan(429);   // > 100 permintaan / 60 detik
+}
+```
+
+`redis_batas(soket, kunci, maks, window_detik): bool` — INCR + EXPIRE, kembalikan `benar` bila masih di bawah batas.
+
 Balasan RESP dipetakan ke teks: simple string / integer / bulk apa adanya, `nil` menjadi `""`, array digabung dengan baris baru (`\n`).
 
 ## Struktur

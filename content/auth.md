@@ -38,6 +38,22 @@ kalau auth_verifikasi(sandi_dari_form, simpan) {
 - `jwt_verifikasi(token: teks, rahasia: teks): bool` — cek tanda tangan (waktu konstan).
 - `jwt_payload(token: teks): teks` — ambil payload JSON. **Verifikasi dulu** sebelum percaya isinya.
 
+### Token sesi (JWT + kedaluwarsa)
+
+```tenun
+biar token: teks = auth_jwt("42", "kunci-rahasia", 3600);   // berlaku 1 jam
+kalau auth_cek(token, "kunci-rahasia") {                     // sig valid & belum exp
+    cetak(auth_subjek(token));                               // -> "42"
+}
+biar t: teks = auth_bearer();                                // header Authorization: Bearer ...
+```
+
+- `auth_jwt(sub, rahasia, ttl_detik): teks` — buat JWT dengan klaim `sub`/`iat`/`exp`.
+- `auth_cek(token, rahasia): bool` — tanda tangan valid DAN belum kedaluwarsa.
+- `auth_subjek(token): teks` · `auth_klaim(token, kunci): teks` — baca klaim.
+- `auth_bearer(): teks` — token dari header `Authorization: Bearer <token>`.
+- `auth_token_acak(nbyte): teks` — token acak base64url (API key / reset password / verifikasi email).
+
 ## Keamanan
 
 - PBKDF2 120.000 iterasi (HMAC-SHA256). Salt 16 byte acak per sandi.
