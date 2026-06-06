@@ -36,6 +36,11 @@ Fungsi bawaan (tanpa impor). Tersedia di `tenun run` (VM/interp). Codegen native
 ## Angka
 
 - `akar(desimal): desimal`, `pangkat(desimal, desimal): desimal`, `mutlak(desimal): desimal`, `bulatkan(desimal): bulat`
+- `eksp(desimal): desimal`, `ln(desimal): desimal`, `log(desimal): desimal` (basis 10)
+- `sin`, `cos`, `tan`, `tanh` `(desimal): desimal` — trigonometri (radian) + tangen hiperbolik
+- `lantai(desimal): desimal` (floor), `langit(desimal): desimal` (ceil)
+- `acakDesimal(): desimal` — acak [0, 1)
+- `desimalDari(bulat): desimal`, `bulatDari(desimal): bulat` — konversi tipe numerik
 
 ## Larik
 

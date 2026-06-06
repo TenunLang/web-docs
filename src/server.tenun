@@ -14,6 +14,7 @@ biar DOKUMEN: []teks = [
     "jaring", "websocket", "socketio",
     "orm", "mysql", "postgres", "redis",
     "auth", "sesi", "mail", "os", "berkas", "proses",
+    "belajar",
     "contoh", "contoh-toko"
 ];
 
