@@ -22,6 +22,7 @@
   { "nama": "sesi", "judul": "modul sesi — session + cookie" },
   { "nama": "mail", "judul": "modul mail — SMTP/SMTPS, Resend, IMAP/IMAPS" },
   { "nama": "belajar", "judul": "modul belajar — pembelajaran mesin (MLP+backprop, regresi, k-NN, k-means)" },
+  { "nama": "citra", "judul": "modul citra — pemrosesan gambar (PGM/PPM, ambang, resize, segmentasi) + OCR" },
   { "nama": "contoh", "judul": "Cuplikan kode per fitur" },
   { "nama": "contoh-toko", "judul": "Contoh e-commerce lengkap (struktur ala Laravel)" }
 ]

@@ -45,6 +45,30 @@ reg_logistik_latih(model, X, y, 3000, 0.1);   // y berisi 0.0 / 1.0
 cetak(reg_logistik_prediksi(model, x));        // peluang [0,1]
 ```
 
+## Simpan & muat model
+
+```tenun
+jar_latih(bobot, bias, X, Y, 3000, 0.5);
+jar_simpan(bobot, bias, "model.txt");                          // latih sekali
+
+biar bobot: [][][]desimal = jar_muat_bobot("model.txt");        // muat ulang
+biar bias: [][]desimal = jar_muat_bias("model.txt");
+cetak(stat_argmaks(jar_prediksi(bobot, bias, contoh)));
+```
+
+## OCR digit
+
+`data_dari_pola` mengubah pola piksel jadi masukan classifier; muat model terlatih untuk mengenali.
+
+```tenun
+biar tiga: []desimal = data_dari_pola([
+    "####.", "....#", "....#", ".###.", "....#", "....#", "####."
+]);
+cetak(stat_argmaks(jar_prediksi(bobot, bias, tiga)));   // -> 3
+```
+
+Lihat `examples/ocr_latih.tenun` & `examples/ocr_kenali.tenun`.
+
 ## k-NN
 
 ```tenun
