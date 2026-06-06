@@ -1,80 +1,33 @@
-# Toko Tenun & Batik
+# Contoh: Toko Tenun & Batik (e-commerce)
 
-E-commerce **real use case** yang dibangun 100% dengan bahasa [Tenun](https://github.com/TenunLang/Tenun). Struktur **ala Laravel** (MVC + driver + migration/seeder + artisan), memakai banyak modul resmi.
+Aplikasi e-commerce lengkap dengan kerangka **Jala** (MVC): [github.com/TenunLang/toko-tenun](https://github.com/TenunLang/toko-tenun).
 
-## Modul
-
-| Modul | Untuk |
-|-------|-------|
-| `web` | Routing, middleware, cookie, static, response |
-| `orm` | Model + CRUD ke PostgreSQL |
-| `tampilan` (Batik) | Template `.batik` |
-| `auth` | Hash & verifikasi sandi |
-| `sesi` | Login session + keranjang |
-| `mail` | Email konfirmasi pesanan |
-| `redis` | Cache API produk (graceful bila Redis mati) |
-
-## Struktur (ala Laravel)
-
-```
-toko-tenun/
-  index.tenun                inti: muat semua driver + lapisan aplikasi
-  artisan.tenun              runner CLI (migrasi / seed / layani)
-  tenun.json                 dependensi + "skrip" (mirip package.json)
-  driver/                    include modul (provider)
-    database.tenun  cache.tenun  view.tenun  identitas.tenun  mailer.tenun  http.tenun
-  app/
-    config.tenun
-    Models/                  Produk · Pengguna · Pesanan
-    Http/
-      Middleware/Middleware.tenun     mwKeamanan · mwAuth
-      Controllers/          Produk · Auth · Keranjang · Pesanan · Admin
-  database/
-    migrations/             01_buat_produk · 02_buat_pengguna · 03_buat_pesanan
-    seeders/                ProdukSeeder
-    Migrator.tenun          jalankanMigrasi() · jalankanSeed()
-  routes/web.tenun          daftarRute() — bind URL ke controller + middleware
-  resources/views/          *.batik
-  public/gaya.css
-```
+## Fitur
+- Etalase: katalog, filter kategori, pencarian, detail produk.
+- Keranjang per-sesi, checkout, halaman sukses.
+- Akun: daftar/masuk/keluar (sandi PBKDF2 via modul `auth`).
+- Admin: dashboard (omzet), kelola produk & pesanan (DataTables), live chat.
+- Live chat WebSocket (widget pelanggan + panel admin).
+- UI: Bootstrap 5 + jQuery + DataTables, responsif.
 
 ## Jalankan
-
-Prasyarat: **PostgreSQL** di `localhost:5432` (`postgres`, tanpa sandi). Opsional: **Redis** `:6379` (cache), **Mailpit** `:1025` (email).
-
 ```
-tenun add web orm tampilan auth sesi mail redis
-
-tenun jalan migrasi     # buat tabel        (= tenun run artisan.tenun migrasi)
-tenun jalan seed        # data contoh
-tenun jalan layani      # server http://localhost:8080
+tenun add jala
+tenun add websocket
+tenun                 # http://localhost:8080
+tenun chat.tenun      # live chat ws://localhost:3000 (proses terpisah)
 ```
+Admin: `admin@toko.id` / `admin123`.
 
-`tenun jalan <skrip>` membaca bagian `"skrip"` di `tenun.json` (mirip `npm run` / `bun run`).
-
-## Fitur (real use case)
-
-- Katalog + **pencarian** (`?cari=`) & **filter jenis** (`?jenis=tenun|batik`)
-- Detail produk, API JSON `GET /api/produk` (di-cache Redis, header `X-Cache`)
-- Registrasi & login (sandi di-hash, validasi email, session cookie HttpOnly)
-- **Middleware**: header keamanan (`mwKeamanan`) + proteksi rute login (`mwAuth`)
-- Keranjang dengan **jumlah** + hapus item (per-sesi)
-- Checkout: cek stok, kurangi stok, simpan pesanan, kirim email
-- **Riwayat pesanan** per pengguna
-- **Flash message** antar-redirect
-- Admin tambah produk
-
-## Bonus realtime
-
+## Struktur (ala Laravel)
 ```
-tenun add socketio
-tenun run notif.tenun     # Socket.IO :3001  (file terpisah)
+index.tenun  chat.tenun  Routes.tenun
+App/{Config,Helper}.tenun
+App/Controllers/{Home,Produk,Keranjang,Checkout,Auth,Admin}.tenun
+App/Models/{Produk,Keranjang,Pengguna,Pesanan}.tenun
+Views/  (Layout + Partials + Home/Keranjang/Checkout/Auth/Admin)
+Public/ (style.css, app.js)
 ```
 
-## Produksi
-
-HTTP; untuk HTTPS terminasi TLS di reverse proxy (Caddy/nginx).
-
-## Lisensi
-
-MIT.
+## Skala besar (10rb–1jt+ pengguna)
+Worker **stateless** di belakang load balancer; state (sesi, keranjang, cache, rate-limit) di **Redis**; data di **MySQL/Postgres** (modul `orm`) dengan index + read-replica; aset via CDN; live chat fan-out via Redis Pub/Sub. Tanpa state lokal -> scaling horizontal aman (mis. k8s HPA).
