@@ -9,39 +9,43 @@ Permintaan → Rute → Kontroler → (Model) → Tampilan → Respons
 ## Mulai cepat
 
 ```
-tenun baru blog        # scaffold proyek (mirip `laravel new`)
-cd blog
-tenun add jala         # pasang jala + web + tampilan
-tenun run app.tenun    # http://localhost:8080
+tenun add jala                                  # ambil Jala (+ CLI)
+tenun tenun_modul/jala/cli/jala.tenun baru Blog # scaffold proyek
+cd Blog
+tenun add jala                                  # pasang dependensi
+tenun                                           # jalankan index.tenun -> http://localhost:8080
 ```
 
-Struktur hasil scaffold (nama folder teknis/English, kode Indonesia):
+`tenun <file.tenun>` jalan langsung (tanpa `run`); `tenun` tanpa argumen menjalankan `index.tenun`. CLI scaffold = program Tenun (`cli/jala.tenun`) di dalam modul, bukan compiler inti.
+
+Struktur hasil scaffold (folder berhuruf besar ala Laravel, kode Indonesia):
 
 ```
-app.tenun                bootstrap
-routes.tenun             rute -> controller
-app/
-  config.tenun
-  controllers/home.tenun
-  models/example.tenun
-views/
-  layout.batik           layout ({{konten}})
-  home.batik  about.batik
-  partials/header.batik  ({{> partials/header}})
-public/style.css         statis
+index.tenun              titik masuk (`tenun` menjalankan ini)
+nakhoda.tenun            CLI proyek (generator)
+Routes.tenun             rute -> controller
+App/
+  Config.tenun
+  Controllers/Home.tenun
+  Models/Example.tenun
+Views/
+  Layout.batik           layout ({{konten}})
+  Home.batik  About.batik
+  Partials/Header.batik  ({{> Partials/Header}})
+Public/style.css         statis
 ```
 
 ## Inti
 
 ```tenun
-// app/controllers/home.tenun
+// App/Controllers/Home.tenun
 fungsi home_index(): teks {
-    kembali jala_tampil_tata("layout", "home", peta{ "judul": "Beranda", "pesan": "Halo!" });
+    kembali jala_tampil_tata("Layout", "Home", peta{ "judul": "Beranda", "pesan": "Halo!" });
 }
-// routes.tenun
+// Routes.tenun
 jala_get("/", home_index);
 jala_get("/pos/:id", pos_lihat);
-// app.tenun
+// index.tenun
 fungsi tangani(m: teks, j: teks, b: teks): teks { kembali jala_tangani(m, j, b); }
 jala_layani(8080);
 ```
@@ -58,10 +62,12 @@ jala_layani(8080);
 
 ## Generator (ala artisan make:)
 
+Lewat `nakhoda.tenun` di proyek:
+
 ```
-tenun buat:controller produk   # app/controllers/produk.tenun
-tenun buat:model produk        # app/models/produk.tenun
-tenun buat:view produk         # views/produk.batik
+tenun nakhoda.tenun controller Produk   # App/Controllers/Produk.tenun
+tenun nakhoda.tenun model Produk        # App/Models/Produk.tenun
+tenun nakhoda.tenun view Produk         # Views/Produk.batik
 ```
 
 ## Model
