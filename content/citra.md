@@ -12,7 +12,9 @@ impor "citra";
 
 ## Format
 
-Memuat **PGM** (P2 grayscale) & **PPM** (P3 RGB). JPG/PNG dikonversi dulu: `magick ktp.jpg ktp.pgm`. Decode JPG/PNG belum ada di compiler.
+- **PNG** 8-bit via `citra_png` (builtin `bacaGambar`: zlib inflate + unfilter).
+- **PGM** (P2) / **PPM** (P3) via `citra_muat_pgm` / `citra_muat_ppm`.
+- JPG belum didukung -> konversi ke PNG: `magick ktp.jpg ktp.png`.
 
 ## Representasi
 
@@ -31,13 +33,15 @@ biar vektor: []desimal = citra_ke_vektor(kecil); // -> masukan classifier
 
 ## OCR end-to-end
 
-`examples/ocr_gambar.tenun` (citra + belajar): muat PGM digit -> segmentasi -> resize 7x5 -> MLP.
+Pipeline: PNG -> grayscale -> balik -> ambang -> segmentasi kolom -> bbox per glyph -> resize 12x16 -> MLP (modul belajar). Model dilatih pada dataset digit cetak **multi-font** (19 font Windows). Tenun = engine: latih sekali, muat, inferensi.
 
 ```
-$ tenun run examples/ocr_gambar.tenun
-teks terbaca:
-357
+$ tenun run examples/ocr_baca.tenun nik.png
+nik.png
+terbaca: 3674072257025006
 ```
+
+Dataset terpercaya (MNIST) / model eksternal: latih di luar, ekspor ke format model Tenun (`tools/latih_mnist.py`), lalu `jar_muat_*`. Untuk teks CETAK seperti KTP, korpus multi-font lebih cocok daripada MNIST (tulisan tangan).
 
 ## Fungsi
 

@@ -41,6 +41,7 @@ Fungsi bawaan (tanpa impor). Tersedia di `tenun run` (VM/interp). Codegen native
 - `lantai(desimal): desimal` (floor), `langit(desimal): desimal` (ceil)
 - `acakDesimal(): desimal` — acak [0, 1)
 - `desimalDari(bulat): desimal`, `bulatDari(desimal): bulat`, `teksDari(desimal): teks` — konversi tipe numerik
+- `bacaGambar(path): teks` — decode PNG 8-bit -> "lebar tinggi g0 g1 ..." (grayscale 0-255)
 
 ## Larik
 
