@@ -3,6 +3,7 @@
   { "nama": "bahasa", "judul": "Referensi bahasa: tipe, sintaks, fungsi, peta, first-class function" },
   { "nama": "grammar", "judul": "Grammar EBNF" },
   { "nama": "builtin", "judul": "Semua fungsi builtin" },
+  { "nama": "jala", "judul": "modul jala — kerangka web MVC (Rute/Kontroler/Model/Tampilan, rasa Laravel)" },
   { "nama": "web", "judul": "modul web — HTTP framework (routing, middleware, CORS, cookie, static)" },
   { "nama": "rute", "judul": "modul rute — router sederhana" },
   { "nama": "larik", "judul": "modul larik — utilitas fungsional (map/filter/reduce)" },
