@@ -14,7 +14,7 @@ biar DOKUMEN: []teks = [
     "websocket", "socketio",
     "orm", "mysql", "postgres", "redis",
     "auth", "sesi", "mail",
-    "contoh-toko"
+    "contoh", "contoh-toko"
 ];
 
 fungsi cIndex(): teks {
