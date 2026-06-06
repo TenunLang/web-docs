@@ -54,6 +54,15 @@ jala_layani(8080);
 - **Tampilan (Batik)**: `jala_tampil(nama, data)`, `jala_tampil_tata(tata, nama, data)`, `jala_render`, `jala_daftar`, `jala_atur_tampilan(dir)`. Folder default `views/`. Sintaks: `{{kunci}}`, `{{#jika k}}…{{/jika k}}`, `{{> partials/nama}}`.
 - **Aplikasi**: `jala_tangani`, `jala_layani(port)`, `jala_statik(dir)`, `jala_cors`, `jala_pakai(mw)`.
 - **Konfig**: `jala_atur`, `jala_konfig`.
+- **Keamanan**: `jala_terautentikasi(rahasia)`, `jala_wajib_masuk(rahasia)` (401), `jala_pengguna()` (JWT Bearer via modul auth); CSRF: `jala_csrf_field(id)`, `jala_csrf_cek(id)`.
+
+## Generator (ala artisan make:)
+
+```
+tenun buat:controller produk   # app/controllers/produk.tenun
+tenun buat:model produk        # app/models/produk.tenun
+tenun buat:view produk         # views/produk.batik
+```
 
 ## Model
 
