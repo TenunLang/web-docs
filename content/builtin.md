@@ -47,11 +47,20 @@ Fungsi bawaan (tanpa impor). Tersedia di `tenun run` (VM/interp). Codegen native
 - `petaKunci(m: peta): []teks`
 - `petaHapus(m: peta, k: teks): kosong`
 
-## Berkas
+## Berkas & direktori
 
 - `bacaFile(path: teks): teks`
 - `tulisFile(path: teks, isi: teks): kosong`
 - `adaFile(path: teks): bool`
+- `daftarBerkas(dir: teks): []teks` — isi direktori
+- `buatDir(path: teks): kosong` — mkdir -p
+- `hapusBerkas(path: teks): kosong` / `hapusDir(path: teks): kosong` (rekursif)
+- `ukuranBerkas(path: teks): bulat` — ukuran byte (-1 bila tak ada)
+- `apakahDir(path: teks): bool`
+
+## Proses
+
+- `jalankan(perintah: teks): teks` — jalankan perintah shell, kembalikan stdout.
 
 ## JSON (top-level)
 
