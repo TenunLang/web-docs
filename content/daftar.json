@@ -5,6 +5,7 @@
   { "nama": "builtin", "judul": "Semua fungsi builtin" },
   { "nama": "web", "judul": "modul web — HTTP framework (routing, middleware, CORS, cookie, static)" },
   { "nama": "rute", "judul": "modul rute — router sederhana" },
+  { "nama": "larik", "judul": "modul larik — utilitas fungsional (map/filter/reduce)" },
   { "nama": "tampilan", "judul": "modul tampilan — Batik template engine (.batik)" },
   { "nama": "json", "judul": "modul json — bangun & baca JSON" },
   { "nama": "websocket", "judul": "modul websocket — server WebSocket RFC 6455" },

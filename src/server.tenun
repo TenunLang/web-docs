@@ -10,7 +10,7 @@ impor "web";
 
 biar DOKUMEN: []teks = [
     "index", "bahasa", "grammar", "builtin",
-    "web", "rute", "tampilan", "json",
+    "web", "rute", "larik", "tampilan", "json",
     "websocket", "socketio",
     "orm", "mysql", "postgres", "redis",
     "auth", "sesi", "mail",
