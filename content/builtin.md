@@ -20,7 +20,16 @@ Fungsi bawaan (tanpa impor). Tersedia di `tenun run` (VM/interp). Codegen native
 - `akhiriDengan(teks, akhiran: teks): bool`
 - `keBulat(teks): bulat`
 - `keTeks(bulat): teks`
+- `keDesimal(teks): desimal`
+- `pangkas(teks): teks` — buang spasi di ujung (trim)
+- `keBesar(teks): teks` / `keKecil(teks): teks` — huruf besar/kecil (ASCII)
 - `tipeKonten(namaFile: teks): teks` — MIME dari ekstensi
+
+## Waktu & acak
+
+- `waktu(): bulat` — unix timestamp (detik)
+- `acakAngka(min: bulat, max: bulat): bulat` — bilangan acak [min, max)
+- `acak(n: bulat): teks` — n byte acak (CSPRNG, lihat Kripto)
 
 ## Angka
 
