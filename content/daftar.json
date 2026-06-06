@@ -8,6 +8,7 @@
   { "nama": "larik", "judul": "modul larik — utilitas fungsional (map/filter/reduce)" },
   { "nama": "tampilan", "judul": "modul tampilan — Batik template engine (.batik)" },
   { "nama": "json", "judul": "modul json — bangun & baca JSON" },
+  { "nama": "jaring", "judul": "modul jaring — HTTP client + parser HTML/XML (scraping)" },
   { "nama": "websocket", "judul": "modul websocket — server WebSocket RFC 6455" },
   { "nama": "socketio", "judul": "modul socketio — Socket.IO realtime (emit/on + broadcast)" },
   { "nama": "orm", "judul": "modul orm — ORM MySQL/Postgres + definisi model" },
