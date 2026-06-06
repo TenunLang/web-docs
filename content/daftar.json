@@ -14,6 +14,7 @@
   { "nama": "mysql", "judul": "modul mysql — klien MySQL/MariaDB" },
   { "nama": "postgres", "judul": "modul postgres — klien PostgreSQL" },
   { "nama": "redis", "judul": "modul redis — klien Redis (RESP)" },
+  { "nama": "os", "judul": "modul os — info sistem operasi" },
   { "nama": "auth", "judul": "modul auth — hashing sandi PBKDF2 + JWT" },
   { "nama": "sesi", "judul": "modul sesi — session + cookie" },
   { "nama": "mail", "judul": "modul mail — SMTP/SMTPS, Resend, IMAP/IMAPS" },

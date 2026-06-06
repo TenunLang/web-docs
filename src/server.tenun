@@ -13,7 +13,7 @@ biar DOKUMEN: []teks = [
     "web", "rute", "larik", "tampilan", "json",
     "websocket", "socketio",
     "orm", "mysql", "postgres", "redis",
-    "auth", "sesi", "mail",
+    "auth", "sesi", "mail", "os",
     "contoh", "contoh-toko"
 ];
 

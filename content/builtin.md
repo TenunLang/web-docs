@@ -91,6 +91,11 @@ Fungsi bawaan (tanpa impor). Tersedia di `tenun run` (VM/interp). Codegen native
 - `terimaAman(soket: bulat, n: bulat): teks`
 - `tutupAman(soket: bulat): kosong`
 
+## Sistem / OS
+
+- `infoOS(kunci: teks): teks` — kunci: `nama` (windows/linux/macos), `arch`, `host`, `pengguna`, `cpu`, `cwd`, `temp`.
+- `lingkungan(nama: teks): teks` — variabel lingkungan (env), "" bila tidak ada.
+
 ## KV store (persisten, file, aman multi-thread)
 
 - `simpan(kunci: teks, nilai: teks): kosong`
